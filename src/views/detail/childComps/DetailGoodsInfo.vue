@@ -37,15 +37,15 @@ export default {
     };
   },
   methods:{
-    imgLoad(){
+    imgLoad(){ //判断，当图片全部加载完成时，才发送事件通知scroll刷新
       this.counter++
       if(this.counter === this.imgLength){  
-        this.$emit('imgRefresh')
+        this.$emit('imgRefresh') 
       }
     }
   },
   watch: {
-    detailInfo() {
+    detailInfo() { //当数据发送变化的时候，把最新的图片数量存起来做比较
       this.imgLength = this.detailInfo.detailImage[0].list.length;
     }
   }

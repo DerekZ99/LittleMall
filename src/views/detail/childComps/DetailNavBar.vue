@@ -35,7 +35,7 @@ export default {
       this.curIndex = index;
       this.$emit('titleClick',index)
     },
-    backClick(){
+    backClick(){ //执行返回上一页
       this.$router.back()
     }
   }

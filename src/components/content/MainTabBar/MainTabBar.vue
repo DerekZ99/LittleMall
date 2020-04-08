@@ -10,19 +10,19 @@
       <div slot="item-text">首页</div>
     </tab-bar-item>
     <tab-bar-item path="/categories">
-      <img slot="item-logo" src="~assets/img/tabbar/gengduo.png" />
+      <img slot="item-logo" src="~assets/img/tabbar/fenlei.png" />
       <img
         slot="item-icon-activated"
-        src="~assets/img/tabbar/gengduo (2).png"
+        src="~assets/img/tabbar/fenlei_1.png"
         alt
       />
       <div slot="item-text">分类</div>
     </tab-bar-item>
     <tab-bar-item path="/cart">
-      <img slot="item-logo" src="~assets/img/tabbar/lihe.png" />
+      <img slot="item-logo" src="~assets/img/tabbar/gouwuche.png" />
       <img
         slot="item-icon-activated"
-        src="~assets/img/tabbar/lihe (2).png"
+        src="~assets/img/tabbar/gouwuche_1.png"
         alt
       />
       <div slot="item-text">购物车</div>

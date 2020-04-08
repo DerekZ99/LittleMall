@@ -5,6 +5,7 @@
       class="tab-control-item"
       :class="{active: index == curIndex}"
       @click="tabClick(index)"
+      :key="item"
     >
       <span>{{item}}</span>
     </div>
@@ -23,12 +24,12 @@ export default {
   },
   data() {
     return {
-      curIndex: 0
+      curIndex: 0  //记录当前的选中的索引
     };
   },
   methods:{
     tabClick(index){
-      this.curIndex = index
+      this.curIndex = index  //给当前索引赋值
       this.$emit('tabClick', index)
     }
   }

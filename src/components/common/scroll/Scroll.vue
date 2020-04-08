@@ -49,10 +49,10 @@ export default {
     scrollTo(x, y, time = 1500) {
       this.scroll && this.scroll.scrollTo(x, y, time);
     },
-    refresh() {
+    refresh() { //给页面刷新高度
       this.scroll && this.scroll.refresh();
     },
-    finishPullUp() {
+    finishPullUp() { //页面滚动到底部必须调用的函数
       this.scroll && this.scroll.finishPullUp();
     },
     getScrollY(){

@@ -15,7 +15,7 @@
 import { mapGetters } from "vuex";
 export default {
   methods: {
-    clearClick() {
+    clearClick() {  //情况购物车
       this.$store.state.cartList = [];
     },
     checkAllClick() {
@@ -33,19 +33,21 @@ export default {
   },
   computed: {
     ...mapGetters(["cartLength", "cartList"]),
-    totalPrice() {
+    totalPrice() { 
       return (
         "¥" +
         this.cartList
-          .filter(item => {
+          .filter(item => { //先过滤掉没有被选中的商品
             return item.checked;
-          })
+          }) 
           .reduce((preValue, item) => {
+           //剩下的商品 每个都用count * 价格 再加上上一次的结果
             return preValue + item.price * item.count;
           }, 0)
       );
     },
     checkLength() {
+      // ↓拿到被选中的商品的总件数
       return this.cartList.filter(item => item.checked).length;
     },
     isCheckAll() {

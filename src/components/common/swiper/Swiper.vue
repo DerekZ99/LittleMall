@@ -21,8 +21,8 @@ export default {
     };
   },
   methods: {
-    imageLoad() {
-      if (!this.isLoad) {
+    imageLoad() { //当页面加载完成之后发送一个事件出去
+      if (!this.isLoad) { //这里的作用是强制只发送一次自定义事件
         this.$emit("swiperImageLoad");
         this.isLoad = true
       }

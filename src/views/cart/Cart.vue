@@ -15,7 +15,7 @@ import NavBar from "components/common/navbar/NavBar";
 import CartList from "./childComps/CartList"
 import CartBottomBar from "./childComps/CartBottomBar"
 
-import { mapGetters } from "vuex";
+import { mapGetters } from "vuex"; //引入getters 为了拿到里面的方法
 
 export default {
   name: "Cart",
@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     // ...mapGetters(["cartLength", "cartList"])
-    ...mapGetters({
+    ...mapGetters({ //拿到getters里面的计算购物车长度的方法（返回值）
       length:'cartLength'
     })
   }

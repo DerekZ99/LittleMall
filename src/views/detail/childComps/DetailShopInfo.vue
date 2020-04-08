@@ -54,7 +54,7 @@ export default {
     };
   },
   computed: {
-    getPower() {
+    getPower() {  //判断数字的位数，转换其显示的内容
       this.sellsNum = this.shop.sells;
       if (this.sellsNum / 10000 > 1) {
         return (this.sellsNum / 10000).toFixed(1) + "万";

@@ -17,6 +17,7 @@
 </template>
 
 <script>
+// 引入子组件↓
 import DetailNavBar from "./childComps/DetailNavBar";
 import DetailSwiper from "./childComps/DetailSwiper";
 import DetailBaseInfo from "./childComps/DetailBaseInfo";
@@ -25,7 +26,7 @@ import DetailGoodsInfo from "./childComps/DetailGoodsInfo";
 import DetailParamsInfo from "./childComps/DetailParamsInfo";
 import DetailCommentInfo from "./childComps/DetailCommentInfo";
 import DetailBottomBar from "./childComps/DetailBottomBar";
-
+// 引入公共组件↓
 import GoodsList from "components/content/goods/GoodsList";
 import Scroll from "components/common/scroll/Scroll";
 import BackTop from "components/common/backTop/BackTop";
@@ -38,8 +39,8 @@ import {
   GoodsParams,
   getRecommend
 } from "network/detail";
-import { debounce } from "common/utils";
-import { itemListenerMixin } from "common/mixin";
+import { debounce } from "common/utils";  //引入防抖函数
+import { itemListenerMixin } from "common/mixin";  //引入混入
 
 export default {
   name: "Detail",
@@ -55,15 +56,14 @@ export default {
     GoodsList,
     DetailBottomBar,
     BackTop
-    // Toast
   },
   mixins: [itemListenerMixin],
   data() {
     return {
-      iid: null,
-      topImages: [],
-      goods: {},
-      shop: {},
+      iid: null, // 数据中iid的容器
+      topImages: [], //顶部图片容器
+      goods: {},  //商品信息容器
+      shop: {},  
       detailInfo: {},
       paramInfo: {},
       goodsComment: {},
@@ -72,8 +72,6 @@ export default {
       commentOffsetTop: 0,
       recommendOffsetTop: 0,
       isShowBackTop: false
-      // message:'',
-      // show:false
     };
   },
   methods: {
@@ -84,7 +82,7 @@ export default {
       this.commentOffsetTop = this.$refs.commentInfo.$el.offsetTop - 44;
       this.recommendOffsetTop = this.$refs.recommendTop.$el.offsetTop - 44;
     },
-    titleClick(index) {
+    titleClick(index) { //根据索引跳转到组件对应的位置
       switch (index) {
         case 0:
           this.$refs.scroll.scrollTo(0, 0);
@@ -136,15 +134,16 @@ export default {
       product.price = this.goods.realPrice;
       product.iid = this.iid;
 
-      // 2 将商品添加到购物车里
+      // 2 将商品添加到购物车里  （传到了actions里面进行了处理）
       this.$store.dispatch("addCart", product).then(res => {
-        
+        // 当弹出提示信息
         this.$toast.show(res, 2000);
       });
     }
   },
   mounted() {},
   destroyed() {
+    // 当离开此页的时候，取消对图片的监听
     this.$bus.$off("itemImageLoad", this.itemImgListener);
   },
   created() {
@@ -182,7 +181,7 @@ export default {
       }
     });
 
-    getRecommend().then(res => {
+    getRecommend().then(res => {  //将数据存入容器中
       this.recommendList = res.data.list;
     });
   }

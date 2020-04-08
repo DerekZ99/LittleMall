@@ -18,9 +18,10 @@ export default {
     CartListItem
   },
   computed: {
+    // ↓拿到购物车中的内容（从store中拿）
     ...mapGetters(["cartList"])
   },
-  activated(){
+  activated(){ //切到当前页面的时候进行刷新
     this.$refs.scroll.refresh();
   }
 };

@@ -20,15 +20,15 @@ export default {
     }
   },
   computed: {
-    showImg() {
+    showImg() { //根据传来的数据判断显示哪个（有多个父级组件复用这个组件）
       return this.goodsItem.image || this.goodsItem.show.img;
     }
   },
   methods: {
-    imageLoad() {
-      this.$bus.$emit("itemImageLoad");
+    imageLoad() { //当图片加载完成时
+      this.$bus.$emit("itemImageLoad"); //利用事件总站发送事件
     },
-    itemClick() {
+    itemClick() {  //页面跳转
       this.$router.push("/detail/" + this.goodsItem.iid);
     }
   }

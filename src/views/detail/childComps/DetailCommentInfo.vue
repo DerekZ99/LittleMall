@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { formatDate } from "common/utils";
+import { formatDate } from "common/utils"; //调用封装好的日期格式转换函数
 export default {
   props: {
     goodsComment: {
@@ -34,7 +34,7 @@ export default {
     }
   },
   filters: {
-    formatDate(time) {
+    formatDate(time) {  //时间戳 时间处理
       time = time * 1000;
       let date = new Date(time);
       return formatDate(date, "yyyy-MM-dd hh:mm");

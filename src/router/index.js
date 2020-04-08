@@ -10,7 +10,7 @@ const Detail = () => import("../views/detail/Detail")
 
 Vue.use(vueRouter)
 
-const routes = [{
+const routes = [{ //配置映射关系
     path: "/",
     redirect: "/home"
   },
@@ -31,7 +31,7 @@ const routes = [{
     component: Profile
   },
   {
-    path: '/detail/:iid',
+    path: '/detail/:iid',  //要传的路由id
     component: Detail
   }
 ]
