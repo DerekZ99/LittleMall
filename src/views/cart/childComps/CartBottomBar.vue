@@ -4,9 +4,9 @@
       <img :class="{check:isCheckAll}" src="~assets/img/newicons/checked.svg" alt />
     </div>
     <span @click="checkAllClick" class="select-all">全选</span>
-    <span class="clear-cart" @click="clearClick">清除购物车</span>
+    <span class="clear-cart" @click="clearClick">删除选中</span>
     <span class="total-price">合计:{{totalPrice}}</span>
-
+    
     <span class="calculate" @click="calcClick">去计算({{checkLength}})</span>
   </div>
 </template>
@@ -15,34 +15,37 @@
 import { mapGetters } from "vuex";
 export default {
   methods: {
-    clearClick() {  //情况购物车
-      this.$store.state.cartList = [];
+    clearClick() { //购物车删除选中功能
+      this.$store.state.cartList = this.cartList.filter(item => !item.checked)
     },
     checkAllClick() {
-      if(this.isCheckAll){ //全部选中的情况之下
-      // 让checkList里面所有item的checked属性为false （实现全部不选中）
-        this.cartList.forEach(item => item.checked = false)
-      } else { //部分或全部都不选中的情况下
-      // 让cartList里面所有的item的checked属性为true （实现全部选中）
-        this.cartList.forEach(item => item.checked = true)
+      if (this.isCheckAll) {
+        //全部选中的情况之下
+        // 让checkList里面所有item的checked属性为false （实现全部不选中）
+        this.cartList.forEach(item => (item.checked = false));
+      } else {
+        //部分或全部都不选中的情况下
+        // 让cartList里面所有的item的checked属性为true （实现全部选中）
+        this.cartList.forEach(item => (item.checked = true));
       }
     },
-    calcClick(){
-      
-    }
+    calcClick() {}
   },
   computed: {
     ...mapGetters(["cartLength", "cartList"]),
-    totalPrice() { 
+    totalPrice() {
       return (
         "¥" +
         this.cartList
-          .filter(item => { //先过滤掉没有被选中的商品
+          .filter(item => {
+            //先过滤掉没有被选中的商品
             return item.checked;
-          }) 
+          })
           .reduce((preValue, item) => {
-           //剩下的商品 每个都用count * 价格 再加上上一次的结果
-            return preValue + item.price * item.count;
+            //剩下的商品 每个都用count * 价格 再加上上一次的结果
+            let tPrice = preValue + item.price * item.count;
+            // 修复数字乱掉的bug
+            return Math.round(tPrice * 100) / 100;
           }, 0)
       );
     },

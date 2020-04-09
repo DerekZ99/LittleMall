@@ -78,9 +78,9 @@ export default {
       tabOffsetTop: 0, //tabbar距离顶部的高度
       isTabFixed: false, //判断tabbar是否固定（做吸顶效果）
       saveY: 0, //用户离开时的页面高度
-      Tab0CurPosition: -this.tabOffsetTop,
-      Tab1CurPosition: -this.tabOffsetTop,
-      Tab2CurPosition: -this.tabOffsetTop,
+      Tab0CurPosition: -577,
+      Tab1CurPosition: -577,
+      Tab2CurPosition: -577,
       tabCurIndex: 0
     };
   },
@@ -127,15 +127,15 @@ export default {
         case 0:
           this.curType = "pop";
           // 跳转到用户上次浏览的位置
-          this.$refs.scroll.scrollTo(0, this.Tab0CurPosition,100);
+          this.$refs.scroll.scrollTo(0, this.Tab0CurPosition, 100);
           break;
         case 1:
           this.curType = "new";
-          this.$refs.scroll.scrollTo(0, this.Tab1CurPosition,100);
+          this.$refs.scroll.scrollTo(0, this.Tab1CurPosition, 100);
           break;
         case 2:
           this.curType = "sell";
-          this.$refs.scroll.scrollTo(0, this.Tab2CurPosition,100);
+          this.$refs.scroll.scrollTo(0, this.Tab2CurPosition, 100);
           break;
       }
       // 保持两个tabbar的index同步↓
@@ -153,6 +153,7 @@ export default {
       this.isShowBackTop = -position.y > 1000;
       // 2 决定tabControl是否吸顶（position:fix）↓
       this.isTabFixed = -position.y > this.tabOffsetTop;
+
       // 3 根据当前索引的不同，保存用户当前浏览商品的的高，
       if (this.tabCurIndex === 0) {
         this.Tab0CurPosition = position.y;

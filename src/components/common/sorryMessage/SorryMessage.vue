@@ -4,7 +4,7 @@
       src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586370137806&di=c93b9678519c8ff78fbc85507145aa31&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013a6c57fa1db6a84a0d304f5ef03a.jpg%401280w_1l_2o_100sh.jpg"
       alt
     />
-    <div class="message">缺少接口文档，此功能无法实现</div>
+    <div class="message">缺少接口文档，功能无法实现</div>
   </div>
 </template>
 
